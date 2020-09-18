@@ -16,7 +16,7 @@ class Unim1D {
         return this.locationX + this.velocityX * nowTime;
     }
 
-    dataWrite(): any {
+    public dataWrite(): any {
         let nowlocX : number = 0, nowTime : number = 0;
         for(let count = 1; count <= this.steps; count++){
             nowlocX = this.calcX(nowTime);

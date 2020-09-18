@@ -187,7 +187,7 @@ private calcX(nowTime: number): number {
 データの出力を行う関数(Unim1クラスの関数)
 
 ```typescript
- dataWrite(): any {
+ public dataWrite(): any {
         let nowlocX : number = 0, nowTime : number = 0;
         for(let count = 1; count <= this.steps; count++){
             nowlocX = this.calcX(nowTime);
@@ -196,5 +196,9 @@ private calcX(nowTime: number): number {
         }
     }
 ```
+
+見てわかるとおりほぼすべての変数がプライベートのなっているのがわかる。
+
+constructorとdatawriteがpublicとなっている。
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい
