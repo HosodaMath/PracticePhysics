@@ -109,4 +109,8 @@ def dataWrite(self):
         plt.savefig("unim2D.png")
 ```
 
+### TypeScript
+
+
+
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい

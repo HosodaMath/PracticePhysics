@@ -4,6 +4,13 @@ class Unim1D {
     protected deltaTime: number = 0;
     private totalTime: number = 0;
     protected steps: number = 0;
+    /**
+     * @constructor
+     * @param initX Initial value of x coordinate
+     * @param initVX Initial value of velocity x
+     * @param deltaTime incremental time
+     * @param totalTime total time
+     */
     public constructor(initX: number, initVX: number, deltaTime: number, totalTime: number) {
         this.locationX = initX;
         this.velocityX = initVX;
@@ -12,6 +19,10 @@ class Unim1D {
         this.steps = Math.floor(this.totalTime / this.deltaTime);
     }
 
+    /**
+     * 
+     * @param nowTime now time
+     */
     protected calcX(nowTime: number): number {
         return this.locationX + this.velocityX * nowTime;
     }
@@ -29,12 +40,25 @@ class Unim1D {
 class Unim2D extends Unim1D {
     private locationY : number = 0;
     private velocityY : number = 0;
+    /**
+     * @constructor
+     * @param initX Initial value of x coordinate
+     * @param initY Initial value of y coordinate
+     * @param initVX Initial value of velocity x
+     *  @param initVY Initial value of velocity y
+     * @param deltaTime incremental time
+     * @param totalTime total time
+     */
     public constructor(initX: number, initY : number, initVX: number, initVY : number,deltaTime: number, totalTime: number) {
         super(initX, initVX, deltaTime, totalTime);
         this.locationY = initY;
         this.velocityY = initVY;
     }
 
+    /**
+     * 
+     * @param nowTime now time
+     */
     private calcY(nowTime : number) : number {
         return this.locationY + this.velocityY * nowTime;
     }
