@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
 ## クラス設計( or 関数設計)
 
-変数の初期化(他の言語はコンストラクタという)
+クラス変数の初期化(他の言語はコンストラクタという)
 
 変数は本来全てprivateもしくはprotectedにするべき。ただしデータ出力は基本的にpublic。
 
@@ -130,5 +130,71 @@ TypeScriptはpublic or private or protectedとつけるので比較的わかり�
 C++ Java C#などではpublic or private or protectedとつけるので相性はPythonよりTypeScriptのほうが良い気がする。
 
 もう1つは変数に型がないということで実行するまで型エラーがわからないということただ理由はこの2つだけなのだ。
+
+## TypeScript編
+
+## 初期値(パラメーター設定) ts編
+
+```typescript
+let render = () => {
+    let initX : number = 0.0 //座標xの初期値
+    let initVX : number= 2.0 //速度xの初期値
+    let deltaTime : number = 0.1 //経過時間の値
+    let totalTime : number = 4.0 //総合時間
+    let unim1d = new Unim1D(initX, initVX, deltaTime, totalTime);
+    unim1d.dataWrite();
+}
+
+render();
+```
+
+## クラス設計( or 関数設計)  ts編
+
+変数は本来全てprivateもしくはprotected(クラスの継承で使う)にするべき。ただしコンストラクタとデータ出力は基本的にpublic。
+
+privateはクラス内のみ参照が可能
+publicはどこからでもアクセスできる。
+protectedクラス内もしくは継承クラス(派生クラス)内のみにしか使えない。
+
+コンストラクタ変数の初期化
+
+```typescript
+class Unim1D {
+    private locationX: number = 0;
+    private velocityX: number = 0;
+    private deltaTime: number = 0;
+    private totalTime: number = 0;
+    private steps: number = 0;
+    public constructor(initX: number, initVX: number, deltaTime: number, totalTime: number) {
+        this.locationX = initX;
+        this.velocityX = initVX;
+        this.deltaTime = deltaTime;
+        this.totalTime = totalTime;
+        this.steps = Math.floor(this.totalTime / this.deltaTime);
+    }
+```
+
+座標xを求める関数(Unim1クラスの関数)
+
+$x = x_0 + v_{0x}t$の部分
+
+```typescript
+private calcX(nowTime: number): number {
+        return this.locationX + this.velocityX * nowTime;
+}
+```
+
+データの出力を行う関数(Unim1クラスの関数)
+
+```typescript
+ dataWrite(): any {
+        let nowlocX : number = 0, nowTime : number = 0;
+        for(let count = 1; count <= this.steps; count++){
+            nowlocX = this.calcX(nowTime);
+            console.log(nowTime, nowlocX);
+            nowTime = nowTime + this.deltaTime;
+        }
+    }
+```
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい
