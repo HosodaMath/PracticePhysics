@@ -1,5 +1,12 @@
 "use strict";
 class Unim1D {
+    /**
+     * @constructor
+     * @param initX Initial value of x coordinate
+     * @param initVX Initial value of velocity x
+     * @param deltaTime incremental time
+     * @param totalTime total time
+     */
     constructor(initX, initVX, deltaTime, totalTime) {
         this.locationX = 0;
         this.velocityX = 0;
@@ -12,6 +19,10 @@ class Unim1D {
         this.totalTime = totalTime;
         this.steps = Math.floor(this.totalTime / this.deltaTime);
     }
+    /**
+     *
+     * @param nowTime now time
+     */
     calcX(nowTime) {
         return this.locationX + this.velocityX * nowTime;
     }
@@ -25,6 +36,15 @@ class Unim1D {
     }
 }
 class Unim2D extends Unim1D {
+    /**
+     * @constructor
+     * @param initX Initial value of x coordinate
+     * @param initY Initial value of y coordinate
+     * @param initVX Initial value of velocity x
+     *  @param initVY Initial value of velocity y
+     * @param deltaTime incremental time
+     * @param totalTime total time
+     */
     constructor(initX, initY, initVX, initVY, deltaTime, totalTime) {
         super(initX, initVX, deltaTime, totalTime);
         this.locationY = 0;
@@ -32,6 +52,10 @@ class Unim2D extends Unim1D {
         this.locationY = initY;
         this.velocityY = initVY;
     }
+    /**
+     *
+     * @param nowTime now time
+     */
     calcY(nowTime) {
         return this.locationY + this.velocityY * nowTime;
     }
