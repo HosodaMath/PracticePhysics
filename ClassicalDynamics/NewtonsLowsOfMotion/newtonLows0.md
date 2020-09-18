@@ -132,4 +132,5 @@ TypeScriptはpublic or private or protectedとつけるので比較的わかり�
 
 C++ Java C#などではpublic or private or protectedとつけるので相性はPythonよりTypeScriptのほうが良い気がする。
 
-もう1つは変数に型がないということで実行するまで型エラーがわからないということこの2つだけなのだ。
+もう1つは変数に型がないということで実行するまで型エラーがわからないということ理由はこの2つだけなのだ。
+
