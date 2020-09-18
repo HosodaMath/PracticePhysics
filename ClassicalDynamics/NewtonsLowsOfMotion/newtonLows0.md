@@ -120,4 +120,17 @@ pythonならばグラフにプロットしても良いしcsvとして出力し�
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい。
 
-ところでなぜプロトタイプにPythonとTypeScript
+ところでなぜプロトタイプにPythonの他にTypeScriptが必要なのだろうか。
+
+理由は基本的に2つ有る。
+
+クラスのオブジェクトでしかアクセスしてはいけないとこに変数や関数(メソッド)がアクセスできてしまうからである。
+
+通常は変数やコンストラクタあるいはメソッド(関数)前にpublic or private (or protected はあとで説明)の設定しなければならない、もちろんPythonにもあるのだがPythonはpublic or private or protectedとつけるではなくアンダースコア_をつけるだけなので正直わかりにくい。
+
+TypeScriptはpublic or private or protectedとつけるので比較的わかりやすいと思われる。
+
+C++ Java C#などではpublic or private or protectedとつけるので相性はPythonよりTypeScriptのほうが良い気がする。
+
+もう1つは変数に型がないということで実行するまで型エラーがわからないということこの2つだけなのだ。
+

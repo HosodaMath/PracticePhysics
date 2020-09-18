@@ -34,3 +34,4 @@ if __name__ == "__main__":
 
     unim1d = Unim1D(initX, initVX, deltaTime, totalTime)
     unim1d.dataWrite()
+
