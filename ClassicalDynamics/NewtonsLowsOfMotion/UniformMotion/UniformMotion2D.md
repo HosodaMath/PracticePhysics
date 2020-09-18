@@ -60,10 +60,40 @@ lcoationY + velocityY * nowTime
 
 ```py
 if __name__ == "__main__":
-    initX = 0.0 # 座標xの初期値
+    initX = 0.0 #座標xの初期値
+    initY = 0.0#座標xの初期値
     initVX = 2.0 #速度xの初期値
+    initVY = 5.0#速度yの初期値
     deltaTime = 0.1 #経過時間の値
     totalTime = 4.0 #総合時間
+```
+
+### クラス設計とクラスの継承
+
+基本的には1次元等速直線運動のクラスと同じなのでクラスの継承を行い、2次元等速直線運動のクラスのを作るだけである。
+
+クラス変数の初期化
+
+```py
+class Unim2D(Unim1D):
+    def __init__(self, initX, initY,initVX, initVY,deltaTime, totalTime):
+        Unim1D.__init__(self, initX, initVX, deltaTime, totalTime)
+        self.locationY = initY
+        self.velocityY = initVY
+```
+
+座標yを求める。
+
+```py
+def calcY(self, nowTime : float) -> float:
+        return self.locationY + self.velocityY * nowTime
+
+```
+
+データの出力
+
+```py
+
 ```
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい
