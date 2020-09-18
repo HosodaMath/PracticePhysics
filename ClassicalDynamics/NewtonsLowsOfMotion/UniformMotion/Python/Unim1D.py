@@ -7,23 +7,29 @@ class Unim1D:
         self.velocityX = initVX
         self.deltaTime = deltaTime
         self.totalTime = totalTime
-        self.steps = math.floor(self.totalTime / self.deltaTime)
+        self.steps = int(self.totalTime / self.deltaTime)
     
     def calcX(self, nowTime : float) -> float:
         return self.locationX + self.velocityX * nowTime   
 
     def dataWrite(self):
         nowlocX, nowTime = 0, 0
+        dataX, dataY = [], []
         for _count in range(self.steps):
             nowlocX = self.calcX(nowTime)
-            print(nowTime, nowlocX)
+            #print(nowTime, nowlocX)
+            dataX.append(nowTime)
+            dataY.append(nowlocX)
             nowTime = nowTime + self.deltaTime
+        
+        plt.plot(dataX, dataY, 'go')
+        plt.savefig("unim1D.png")
 
 
 if __name__ == "__main__":
     initX = 0.0 # 座標xの初期値
-    initVX = 0.0 #速度xの初期値
-    deltaTime = 2.0 #経過時間の値
+    initVX = 2.0 #速度xの初期値
+    deltaTime = 0.1 #経過時間の値
     totalTime = 4.0 #総合時間
 
     unim1d = Unim1D(initX, initVX, deltaTime, totalTime)

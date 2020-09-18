@@ -8,7 +8,7 @@ x 座標x 現在の座標  最初の時刻、座標xの初期値、速度xの初
 
 $x_0$ 座標x 最初は設定した値が初期値になる、通常は0 or 1
 
-$v_{0x}$ 速度x 最初は設定した値が初期値になる、通常は0.1 など小さい値
+$v_{0x}$ 速度x 最初は設定した値が初期値になる、通常は1 or 2 などの値
 
 $x = x_0 + v_{0x}t$
 
@@ -62,8 +62,8 @@ lcoationX + velocityX * nowTime
 ```py
 if __name__ == "__main__":
     initX = 0.0 # 座標xの初期値
-    initVX = 0.0 #速度xの初期値
-    deltaTime = 2.0 #経過時間の値
+    initVX = 2.0 #速度xの初期値
+    deltaTime = 0.1 #経過時間の値
     totalTime = 4.0 #総合時間
 ```
 
@@ -95,16 +95,24 @@ def calcX(self, nowTime):
 データの出力を行う関数(Unim1クラスの関数)
 
 ```py
-def dataWrite(self):
+ def dataWrite(self):
         nowlocX, nowTime = 0, 0
+        dataX, dataY = [], []
         for _count in range(self.steps):
             nowlocX = self.calcX(nowTime)
-            print(nowTime, nowlocX)
+            #print(nowTime, nowlocX)
+            dataX.append(nowTime)
+            dataY.append(nowlocX)
             nowTime = nowTime + self.deltaTime
+
+        plt.plot(dataX, dataY, 'go')
+        plt.savefig("unim1D.png")
 ```
 
 forは本来Pythonでは使ってはいけない。
 numpyのnp.arange()が推奨されている。
 しかしより高速で動く他言語(c++やrust)との互換性を考えてfor文を使っている。
+
+pythonならばグラフにプロットしても良いしcsvとして出力しても良い。
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい。
