@@ -32,7 +32,7 @@ $x = x_0 + v_{0x}t$
 * locationX or positionX[^1]
 * Time 現在時刻や経過時間 プログラムの計算時間も必要。
 
-確定要素
+確定要素(あとから追加するかもしれない)
 
 1. 総合時間 totalTime
 2. 経過時間 deltaTime
@@ -56,5 +56,55 @@ $x = x_0 + v_{0x}t$
 ```py
 lcoationX + velocityX * nowTime
 ```
+
+### 初期値(パラメーター設定)
+
+```py
+if __name__ == "__main__":
+    initX = 0.0 # 座標xの初期値
+    initVX = 0.0 #速度xの初期値
+    deltaTime = 2.0 #経過時間の値
+    totalTime = 4.0 #総合時間
+```
+
+### クラス設計( or 関数設計)
+
+変数の初期化(他の言語はコンストラクタという)
+
+変数は本来全てprivateもしくは
+
+```py
+class Unim1:
+    def __init__(self, initX, initVX, deltaTime, totalTime):
+        self.locationX = initX
+        self.velocityX = initVX
+        self.deltaTime = deltaTime
+        self.totalTime = totalTime
+        self.steps = math.floor(totalTime / deltaTime)
+```
+
+座標xを求める関数(Unim1クラスの関数)
+
+$x = x_0 + v_{0x}t$の部分
+
+```py
+def calcX(self, nowTime):
+        return self.locationX + self.velocityX * nowTime
+```
+
+データの出力を行う関数(Unim1クラスの関数)
+
+```py
+def dataWrite(self):
+        nowlocX, nowTime = 0, 0
+        for _count in range(self.steps):
+            nowlocX = self.calcX(nowTime)
+            print(nowTime, nowlocX)
+            nowTime = nowTime + self.deltaTime
+```
+
+forは本来Pythonでは使ってはいけない。
+numpyのnp.arange()が推奨されている。
+しかしより高速で動く他言語(c++やrust)との互換性を考えてfor文を使っている。
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい。
