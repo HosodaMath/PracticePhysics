@@ -39,6 +39,7 @@ $x = x_0 + v_{0x}t$
 3. 現在時刻 nowTime
 4. 総合時間(プログラムの計算時間/ループ回数) steps
 5. 速度 velocityX
+6. 座標x locationX
 
 stepsの求め方(型は原則整数)
 
