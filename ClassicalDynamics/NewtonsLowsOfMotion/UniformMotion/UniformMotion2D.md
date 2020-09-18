@@ -111,6 +111,43 @@ def dataWrite(self):
 
 ### TypeScript
 
+```typescript
+class Unim2D extends Unim1D {
+    private locationY : number = 0;
+    private velocityY : number = 0;
+    /**
+     * @constructor
+     * @param initX Initial value of x coordinate
+     * @param initY Initial value of y coordinate
+     * @param initVX Initial value of velocity x
+     *  @param initVY Initial value of velocity y
+     * @param deltaTime incremental time
+     * @param totalTime total time
+     */
+    public constructor(initX: number, initY : number, initVX: number, initVY : number,deltaTime: number, totalTime: number) {
+        super(initX, initVX, deltaTime, totalTime);
+        this.locationY = initY;
+        this.velocityY = initVY;
+    }
+```
 
+```typescript
+ private calcY(nowTime : number) : number {
+        return this.locationY + this.velocityY * nowTime;
+    }
+```
+
+```typescript
+public dataWrite() : void {
+        let nowlocX = 0, nowlocY = 0;
+        let nowTime = 0;
+        for(let count = 0; count < this.steps; count++){
+            nowlocX = this.calcX(nowTime);
+            nowlocY = this.calcY(nowTime);
+            console.log(nowlocX, nowlocY);
+            nowTime = nowTime + this.deltaTime;
+        }
+    }
+```
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい
