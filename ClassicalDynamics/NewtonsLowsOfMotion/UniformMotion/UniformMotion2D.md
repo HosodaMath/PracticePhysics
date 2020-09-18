@@ -93,7 +93,20 @@ def calcY(self, nowTime : float) -> float:
 データの出力
 
 ```py
+def dataWrite(self):
+        nowlocX, nowlocY = 0, 0
+        nowTime = 0
+        dataX, dataY = [], []
+        for _count in range(self.steps):
+            nowlocX = self.calcX(nowTime)
+            nowlocY = self.calcY(nowTime)
+            #print(nowlocX, nowlocY)
+            dataX.append(nowlocX)
+            dataY.append(nowlocY)
+            nowTime = nowTime + self.deltaTime
 
+        plt.plot(dataX, dataY, 'go')
+        plt.savefig("unim2D.png")
 ```
 
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい

@@ -57,6 +57,6 @@ if __name__ == "__main__":
     deltaTime = 0.1 #経過時間の値
     totalTime = 4.0 #総合時間
 
-    unim1d = Unim1D(initX, initVX, deltaTime, totalTime)
-    unim1d.dataWrite()
+    unim2d = Unim2D(initX, initY,initVX, initVY,deltaTime, totalTime)
+    unim2d.dataWrite()
 
