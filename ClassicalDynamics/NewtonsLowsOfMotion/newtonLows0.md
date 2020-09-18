@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
 変数の初期化(他の言語はコンストラクタという)
 
-変数は本来全てprivateもしくは
+変数は本来全てprivateもしくはprotectedにするべき。ただしデータ出力は基本的にpublic。
 
 ```py
 class Unim1:
@@ -115,4 +115,9 @@ numpyのnp.arange()が推奨されている。
 
 pythonならばグラフにプロットしても良いしcsvとして出力しても良い。
 
+プロトタイプはこれ以降PythonとTypeScript
+で実装していく。
+
 [^1]: 座標を表す英語はcoordinateだがpositionやlocationの方が分かりやすい。
+
+ところでなぜプロトタイプにPythonとTypeScript
