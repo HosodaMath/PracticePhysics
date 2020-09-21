@@ -52,6 +52,7 @@ class Unim2D extends Unim1D {
         this.velocityY = 0;
         this.locationY = initY;
         this.velocityY = initVY;
+        this.nowLocation = new Vector2(0, 0);
     }
     /**
      *
@@ -62,11 +63,10 @@ class Unim2D extends Unim1D {
         return this.locationY;
     }
     dataWrite() {
-        let nowlocX = 0, nowlocY = 0;
-        let nowLocation = new Vector2(nowlocX, nowlocY)
+        //let nowlocX = 0, nowlocY = 0;
         let nowTime = 0;
-        nowLocation.x = this.calcX(nowTime);
-        nowLocation.y = this.calcY(nowTime);
+        this.nowLocation.x = this.calcX(nowTime);
+        this.nowLocation.y = this.calcY(nowTime);
         fill(color(0, 255, 127));
         circle(nowLocation.x, nowLocation.y, 50);
         console.log(nowLocation.x, nowLocation.y);
