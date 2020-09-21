@@ -68,7 +68,7 @@ class Unim2D extends Unim1D {
         this.nowLocation.x = this.calcX(nowTime);
         this.nowLocation.y = this.calcY(nowTime);
         fill(color(0, 255, 127));
-        circle(nowLocation.x, nowLocation.y, 50);
+        circle(this.nowLocation.x, this.nowLocation.y, 50);
         console.log(nowLocation.x, nowLocation.y);
         nowTime = nowTime + this.deltaTime;
     }
