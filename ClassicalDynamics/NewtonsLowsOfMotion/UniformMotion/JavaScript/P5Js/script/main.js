@@ -28,4 +28,6 @@ let setupUnim = () => {
 
 let render = () => {
     unim2d.dataWrite();
-};
+}
+
+
