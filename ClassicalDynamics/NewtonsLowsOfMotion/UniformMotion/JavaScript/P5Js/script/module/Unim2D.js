@@ -24,15 +24,16 @@ class Unim1D {
      * @param nowTime now time
      */
     calcX(nowTime) {
-        return this.locationX + this.velocityX * nowTime;
+        this.locationX = this.locationX + this.velocityX * nowTime;
+        return this.locationX;
     }
     dataWrite() {
         let nowlocX = 0, nowTime = 0;
-        for (let count = 1; count <= this.steps; count++) {
-            nowlocX = this.calcX(nowTime);
-            console.log(nowTime, nowlocX);
-            nowTime = nowTime + this.deltaTime;
-        }
+        nowlocX = this.calcX(nowTime);
+        fill(color(0, 255, 127));
+        circle(nowTime, nowlocX, 50);
+        console.log(nowTime, nowlocX);
+        nowTime = nowTime + this.deltaTime;
     }
 }
 class Unim2D extends Unim1D {
@@ -57,17 +58,19 @@ class Unim2D extends Unim1D {
      * @param nowTime now time
      */
     calcY(nowTime) {
-        return this.locationY + this.velocityY * nowTime;
+        this.locationY = this.locationY + this.velocityY * nowTime;
+        return this.locationY;
     }
     dataWrite() {
         let nowlocX = 0, nowlocY = 0;
+        let nowLocation = new Vector2(nowlocX, nowlocY)
         let nowTime = 0;
-        for (let count = 0; count < this.steps; count++) {
-            nowlocX = this.calcX(nowTime);
-            nowlocY = this.calcY(nowTime);
-            console.log(nowlocX, nowlocY);
-            nowTime = nowTime + this.deltaTime;
-        }
+        nowLocation.x = this.calcX(nowTime);
+        nowLocation.y = this.calcY(nowTime);
+        fill(color(0, 255, 127));
+        circle(nowLocation.x, nowLocation.y, 50);
+        console.log(nowLocation.x, nowLocation.y);
+        nowTime = nowTime + this.deltaTime;
     }
 }
 
